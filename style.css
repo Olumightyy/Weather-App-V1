@@ -65,7 +65,7 @@ h1 {
   font-size: 1rem;
   color: #fff;
   background: #5372F0;
-  transition: 0.2s ease;
+  transition: 0.4s ease;
 }
 .weather-input .search-btn:hover {
   background: #2c52ed;
