@@ -35,7 +35,7 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
     fetch(WEATHER_API_URL).then(response => response.json()).then(data => {
         // Filter the forecasts to get only one forecast per day
         const uniqueForecastDays = [];
-        const fiveDaysForecast = data.list.filter(forecast => {
+        const sevenDaysForecast = data.list.filter(forecast => {
             const forecastDate = new Date(forecast.dt_txt).getDate();
             if (!uniqueForecastDays.includes(forecastDate)) {
                 return uniqueForecastDays.push(forecastDate);
@@ -48,7 +48,7 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
         weatherCardsDiv.innerHTML = "";
 
         // Creating weather cards and adding them to the DOM
-        fiveDaysForecast.forEach((weatherItem, index) => {
+        sevenDaysForecast.forEach((weatherItem, index) => {
             const html = createWeatherCard(cityName, weatherItem, index);
             if (index === 0) {
                 currentWeatherDiv.insertAdjacentHTML("beforeend", html);
