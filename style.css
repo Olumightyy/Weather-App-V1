@@ -9,12 +9,40 @@
 body {
   background: #E3F2FD;
 }
+body.lightmode {
+  background-color: #ffffff;
+  color: #333333;
+}
+body.dark-mode {
+  background-color: #333333;
+  color: #ffffff;
+}
+.Icon{
+  height: 45px;
+  width: 55px;
+  margin-right: 15px
+}
+.Icon :hover{
+  transform: matrix(2);
+  padding: 0;
+}
 h1 {
-  background: #3354d8;
+  /* background: #3354d8;   */
   font-size: 1.75rem;
   text-align: center;
   padding: 18px 0;
   color: #fff;
+  display: flex;
+}
+header{
+  background: #6C757D;
+  display: flex;
+  justify-content: space-between;
+}
+#toggle-mode-button {
+  background: none;
+  border: none;
+  padding: 0;
 }
 .container {
   display: flex;
