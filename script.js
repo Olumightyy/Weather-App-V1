@@ -104,7 +104,20 @@ function toggleMode() {
 
     body.classList.toggle("dark-mode");
   body.classList.toggle("light-mode");
+
+  const currentMode = body.classList.contains("dark-mode") ? "dark" : "light";
+  localStorage.setItem("mode", currentMode);
 }
+// Saving Last saved mode after a refresh
+window.addEventListener("load", () => {
+    const savedMode = localStorage.getItem("mode");
+    const body = document.body;
+    if (savedMode === "dark") {
+      body.classList.add("dark-mode");
+    } else {
+      body.classList.add("light-mode");
+    }
+  });
 
 toggleButton.addEventListener("click", toggleMode);
 locationButton.addEventListener("click", getUserCoordinates);
