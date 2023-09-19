@@ -104,6 +104,11 @@ function toggleMode() {
 
     body.classList.toggle("dark-mode");
   body.classList.toggle("light-mode");
+  if (body.classList.contains("dark-mode")){
+    Icon.src="/images/sun.svg";
+  } else {
+    Icon.src= "./images/clear-night.svg"
+  }
 
   const currentMode = body.classList.contains("dark-mode") ? "dark" : "light";
   localStorage.setItem("mode", currentMode);
