@@ -6,10 +6,14 @@
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
 }
-body {
-  background: #E3F2FD;
+:root{
+  --primary-color: #E3F2FD
+  --secondary-color:#2c52ed
 }
-body.lightmode {
+body {
+  background: var(--primary-color);
+}
+body.light-mode {
   background-color: #ffffff;
   color: #333333;
 }
@@ -17,17 +21,22 @@ body.dark-mode {
   background-color: #333333;
   color: #ffffff;
 }
-.Icon{
+button{
+  background: var(--primary-color);
+  border: 2px;
+}
+#Icon{
   height: 45px;
   width: 55px;
-  margin-right: 15px
+  margin-right: 15px;
+  cursor: pointer;
 }
 .Icon :hover{
   transform: matrix(2);
   padding: 0;
 }
 h1 {
-  /* background: #3354d8;   */
+  /* background: #3354d8;*/
   font-size: 1.75rem;
   text-align: center;
   padding: 18px 0;
@@ -39,11 +48,7 @@ header{
   display: flex;
   justify-content: space-between;
 }
-#toggle-mode-button {
-  background: none;
-  border: none;
-  padding: 0;
-}
+
 .container {
   display: flex;
   gap: 35px;
@@ -64,7 +69,7 @@ header{
 }
 .weather-input input:focus {
   padding: 0 16px;
-  border: 2px solid #5372F0;
+  border: 2px solid var(--secondary-color);
 }
 .weather-input .separator {
   height: 1px;
