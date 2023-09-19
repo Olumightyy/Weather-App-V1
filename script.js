@@ -98,7 +98,7 @@ const getUserCoordinates = () => {
             }
         });
 }
-
+// Adding a light and dark mode feature
 function toggleMode() {
     const body = document.body;
 
