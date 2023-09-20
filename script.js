@@ -1,5 +1,6 @@
 const cityInput = document.querySelector(".city-input");
 const searchButton = document.querySelector(".search-btn");
+const clearButton = document.querySelector(".clear-button");
 const locationButton = document.querySelector(".location-btn");
 const currentWeatherDiv = document.querySelector(".current-weather");
 const weatherCardsDiv = document.querySelector(".weather-cards");
@@ -61,6 +62,20 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
         alert("An error occurred while fetching the weather forecast!");
     });
 }
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const city = cityInput.value.trim();
+            if (city !== '') {
+                getWeatherDetails(cityName, weatherItem, index);
+            }
+        }
+
+        // Function to erase previous weather details
+        function clearWeatherData() {
+            cityInput.value = "";
+            getWeatherDetails.innerHTML= "";
+            localStorage.removeItem('weatherData'); // Remove weather data from local storage
+        }
 
 const getCityCoordinates = () => {
     const cityName = cityInput.value.trim();
@@ -98,21 +113,21 @@ const getUserCoordinates = () => {
             }
         });
 }
-// Adding a light and dark mode feature
-function toggleMode() {
-    const body = document.body;
+        // Adding a light and dark mode feature
+        function toggleMode() {
+            const body = document.body;
 
-    body.classList.toggle("dark-mode");
-  body.classList.toggle("light-mode");
-  if (body.classList.contains("dark-mode")){
-    Icon.src="/images/sun.svg";
-  } else {
-    Icon.src= "./images/clear-night.svg"
-  }
+            body.classList.toggle("dark-mode");
+        body.classList.toggle("light-mode");
+        if (body.classList.contains("dark-mode")){
+            Icon.src="/images/sun.svg";
+        } else {
+            Icon.src= "/images/clear-night.svg";
+        }
 
-  const currentMode = body.classList.contains("dark-mode") ? "dark" : "light";
-  localStorage.setItem("mode", currentMode);
-}
+        const currentMode = body.classList.contains("dark-mode") ? "dark" : "light";
+        localStorage.setItem("mode", currentMode);
+        }
 // Saving Last saved mode after a refresh
 window.addEventListener("load", () => {
     const savedMode = localStorage.getItem("mode");
@@ -128,3 +143,4 @@ toggleButton.addEventListener("click", toggleMode);
 locationButton.addEventListener("click", getUserCoordinates);
 searchButton.addEventListener("click", getCityCoordinates);
 cityInput.addEventListener("keyup", e => e.key === "Enter" && getCityCoordinates());
+clearButton.addEventListener('click', clearWeatherData);
