@@ -66,17 +66,20 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
             event.preventDefault();
             const city = cityInput.value.trim();
             if (city !== '') {
-                getWeatherDetails(cityName, weatherItem, index);
+                getCityCoordinates(cityName, weatherItem, index);
             }
         }
 
         // Function to erase previous weather details
-        function clearWeatherData() {
+        function clearWeatherData(){
             cityInput.value = "";
-            getWeatherDetails.innerHTML= "";
-            localStorage.removeItem('weatherData'); // Remove weather data from local storage
+            // currentWeatherDiv.innerHTML = "";
+            weatherCardsDiv.value = "";
+            localStorage.removeItem('weatherData');
         }
 
+
+        
 const getCityCoordinates = () => {
     const cityName = cityInput.value.trim();
     if (cityName === "") return;
@@ -125,14 +128,14 @@ const getUserCoordinates = () => {
             Icon.src= "/images/clear-night.svg";
         }
 
-        const currentMode = body.classList.contains("dark-mode") ? "dark" : "light";
+        const currentMode = body.classList.contains("light-mode") ? "dark" : "light";
         localStorage.setItem("mode", currentMode);
         }
 // Saving Last saved mode after a refresh
 window.addEventListener("load", () => {
     const savedMode = localStorage.getItem("mode");
     const body = document.body;
-    if (savedMode === "dark") {
+    if (savedMode === "light") {
       body.classList.add("dark-mode");
     } else {
       body.classList.add("light-mode");
